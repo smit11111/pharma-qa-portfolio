@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --background-soft: 220 23% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 211 100% 50%;
+    --glass: 0 0% 100%;
+    --glass-border: 0 0% 100% / 0.6;
+    --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+    --gradient-start: 211 100% 50%;
+    --gradient-mid: 199 89% 48%;
+    --gradient-end: 142 71% 45%;
+    --radius: 0.875rem;
+  }
+  .dark {
+    --background: 222 47% 4%;
+    --background-soft: 222 40% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 40% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 40% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 211 100% 56%;
+    --primary-foreground: 222 47% 4%;
+    --secondary: 217 33% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 58%;
+    --accent: 211 100% 56%;
+    --accent-foreground: 222 47% 4%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --border: 217 33% 15%;
+    --input: 217 33% 15%;
+    --ring: 211 100% 56%;
+    --glass: 222 40% 8%;
+    --glass-border: 255 255 255 / 0.06;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2);
+    --gradient-start: 211 100% 56%;
+    --gradient-mid: 199 89% 52%;
+    --gradient-end: 142 71% 48%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { @apply bg-background text-foreground; overflow-x: hidden; }
+  ::selection { @apply bg-primary/20; }
+}
+
+@layer components {
+  .glass { background: hsl(var(--glass) / 0.55); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border: 1px solid hsl(var(--glass-border)); box-shadow: var(--glass-shadow); }
+  .glass-strong { background: hsl(var(--glass) / 0.78); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid hsl(var(--glass-border)); box-shadow: var(--glass-shadow); }
+  .glass-nav { background: hsl(var(--glass) / 0.65); backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%); border: 1px solid hsl(var(--glass-border)); }
+  .glass-card { background: hsl(var(--glass) / 0.5); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid hsl(var(--glass-border)); box-shadow: var(--glass-shadow); transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .glass-card:hover { background: hsl(var(--glass) / 0.65); border-color: hsl(var(--primary) / 0.2); box-shadow: 0 12px 40px hsl(var(--primary) / 0.08), var(--glass-shadow); transform: translateY(-2px); }
+  .gradient-text { @apply bg-gradient-to-r from-[hsl(var(--gradient-start))] via-[hsl(var(--gradient-mid))] to-[hsl(var(--gradient-end))] bg-clip-text text-transparent; }
+  .gradient-bg { background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)), hsl(var(--gradient-end))); }
+  .gradient-bg-animated { background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)), hsl(var(--gradient-end)), hsl(var(--gradient-mid)), hsl(var(--gradient-start))); background-size: 300% 300%; animation: gradient-shift 12s ease infinite; }
+  .text-balance { text-wrap: balance; }
+  .section-padding { @apply px-5 py-24 sm:px-8 md:py-32 lg:px-12; }
+  .container-px { @apply mx-auto w-full max-w-6xl; }
+  .btn-apple { @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-[0.97]; }
+  .btn-primary { @apply btn-apple gradient-bg text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:brightness-110; }
+  .btn-secondary { @apply btn-apple border border-border/60 bg-foreground/5 backdrop-blur-md hover:bg-foreground/10 hover:border-foreground/20; }
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.2); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.35); }
